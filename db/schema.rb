@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_15_080646) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string "name", null: false
+    t.string "eiken_level", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
