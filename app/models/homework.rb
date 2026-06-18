@@ -17,7 +17,7 @@ class Homework < ApplicationRecord
     ]
   end
 
-  # 関連も検索したい場合（必要なら）
+  # 関連も検索したい場合
   def self.ransackable_associations(auth_object = nil)
     %w[classroom]
   end

@@ -5,7 +5,7 @@
     <%= search_form_for @q, url: homeworks_path, method: :get do |f| %>
       <i class="fa-solid fa-magnifying-glass"></i>
       <%= f.search_field :title_or_content_cont,
-          placeholder: "Week ◯◯ or クラス名で検索",
+          placeholder: "検索",
           class: "search-input",
           id: "searchInput",
           autocomplete: "off" %>
@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <!-- 英検級スクロールバー -->
+  <!-- 英検級タブ -->
   <div class="eiken-level-tabs-wrapper">
     <div class="eiken-level-tabs">
       <% @classrooms.each do |classroom|  %>

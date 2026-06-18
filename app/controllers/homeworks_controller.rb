@@ -3,9 +3,9 @@ class HomeworksController < ApplicationController
     @classrooms = Classroom.all #タブ作成
     @q = Homework.ransack(params[:q]) #検索機能ransack。ransack(params[:q])にすること。
     @homeworks = @q.result(distinct: true).includes(:classroom) 
-    @selected_classroom = Classroom.find_by(id: params[:id])
+    @selected_classroom = Classroom.find_by(id: params[:classroom_id])
     if @selected_classroom
-      @homeworks = @homework.where(classroom_id: @selected_classroom.id)
+      @homeworks = @homeworks.where(classroom_id: @selected_classroom.id)
     end
   end
 
