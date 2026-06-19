@@ -8,6 +8,6 @@ class CreateTaskCompletions < ActiveRecord::Migration[7.2]
       t.timestamps
     end
 
-    add_index :task_completions, [:user_id, :task_id], unique: true
+    add_index :task_completions, [ :user_id, :task_id ], unique: true
   end
 end

@@ -25,6 +25,6 @@ class TasksController < ApplicationController
         Date.today
       else
         week_start
-      end  
+      end
   end
 end

@@ -7,7 +7,7 @@ class Homework < ApplicationRecord
   belongs_to :classroom
   has_many :tasks, dependent: :destroy
 
-  #ransack
+  # ransack
   # 検索可能なカラムを許可する
   def self.ransackable_attributes(auth_object = nil)
     %w[

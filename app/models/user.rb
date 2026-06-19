@@ -11,7 +11,7 @@ class User < ApplicationRecord
   def completed?(task)
     task_completions.exists?(task: task)
   end
-  
+
   def complete!(task)
     task_completions.find_or_create_by(task: task)
   end

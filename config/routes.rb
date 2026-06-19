@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    registrations: "users/registrations",
+    sessions: "users/sessions"
   }
   root "static_pages#top"
 
-  resources :homeworks, only: [:index, :show] 
-  resources :tasks, only: [:index, :show] do
-    resources :task_completions, only: [:create, :destroy]
-    #　turboはネストでルーティングを作ること
+  resources :homeworks, only: [ :index, :show ]
+  resources :tasks, only: [ :index, :show ] do
+    resources :task_completions, only: [ :create, :destroy ]
+    # turboはネストでルーティングを作ること
   end
 end
