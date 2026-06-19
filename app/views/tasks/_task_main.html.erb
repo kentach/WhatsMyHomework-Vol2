@@ -44,21 +44,24 @@
       <button class="task-index-tab" data-tab="completed">完了</button>
     </div>
 
-      <div>
-        <% @tasks.each do |task| %>
-          <div class="task-index-check-wrap">
-            <i class="fa-regular fa-square-check"></i>
+    <% @tasks.each do |task| %>
+      <div
+        id="task-<%= task.id %>"
+        class="task-index-item <%= 'completed' if current_user.completed?(task) %>"
+        data-status="<%= current_user.completed?(task) ? 'completed' : 'incomplete' %>">
 
-            <div class="task-index-main">
-              <div class="task-index-name">
-                <%= task.name %>
-              </div>
-              <%= link_to "詳細 >", task_path(task), class: "task-detail-link" %>
-            </div>
-
+        <label class="task-index-check-wrap">
+          <div id="completed-button-for-task-<%= task.id %>">
+            <%= render 'tasks/completed_button', task: task %>
           </div>
-        <% end %>
+
+          <span class="task-index-name">
+            <%= task.name %>
+          </span>
+        </label>
+
       </div>
+    <% end %>
 
   </div>
 </div>

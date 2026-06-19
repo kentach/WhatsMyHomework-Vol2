@@ -1,7 +1,16 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_date, only: :index
 
   def index
+      @classroom = current_user.classroom
+      @homeworks = @classroom.homeworks.includes(:tasks)
+      @tasks = @homeworks.flat_map(&:tasks)
+  end
+
+  private
+
+  def set_date
     base_date = params[:week].present? ? Date.parse(params[:week]) : Date.today
     # 値が入っていればその日付を使い、入っていなければ今日の日付を使う
     week_start = base_date.beginning_of_week(:monday) # beginning_of_week = 週の開始日を返すメソッド
@@ -9,7 +18,6 @@ class TasksController < ApplicationController
     @week_days = (week_start..week_end).to_a
     @prev_week = week_start - 7.days
     @next_week = week_start + 7.days
-
     @selected_date =
       if params[:date].present?
         Date.parse(params[:date])
@@ -18,9 +26,5 @@ class TasksController < ApplicationController
       else
         week_start
       end  
-
-      @classroom = current_user.classroom
-      @homeworks = @classroom.homeworks.includes(:tasks)
-      @tasks = @homeworks.flat_map(&:tasks)
   end
 end

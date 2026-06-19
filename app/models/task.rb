@@ -5,4 +5,5 @@ class Task < ApplicationRecord
 
   belongs_to :homework
   has_many :task_completions, dependent: :destroy
+  has_many :users, through: :task_completions
 end

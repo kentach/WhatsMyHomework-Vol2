@@ -1,6 +1,5 @@
 document.addEventListener("turbo:load", () => {
   const tabs = document.querySelectorAll(".task-index-tab");
-  const tasks = document.querySelectorAll(".task-index-item");
 
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
@@ -10,16 +9,15 @@ document.addEventListener("turbo:load", () => {
 
       const type = tab.dataset.tab;
 
-      tasks.forEach(task => {
+      document.querySelectorAll(".task-index-item").forEach(task => {
         const status = task.dataset.status;
 
         if (type === "all") {
           task.style.display = "block";
         } else {
-          task.style.display = (status === type) ? "block" : "none";
+          task.style.display = status === type ? "block" : "none";
         }
       });
-
     });
   });
 });

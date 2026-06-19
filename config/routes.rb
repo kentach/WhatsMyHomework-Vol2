@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root "static_pages#top"
 
   resources :homeworks, only: [:index, :show] 
-  resources :tasks, only: [:index, :show]
-  resources :task_completions, only: [:create, :destroy]
+  resources :tasks, only: [:index, :show] do
+    resources :task_completions, only: [:create, :destroy]
+    #　turboはネストでルーティングを作ること
+  end
 end

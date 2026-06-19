@@ -1,0 +1,15 @@
+<div id="completed-button-for-task-<%= task.id %>">
+  <% completed = current_user.completed?(task) %>
+  <% completion = current_user.task_completions.find_by(task_id: task.id) %>
+  <%= button_to completed ? task_task_completion_path(task_id: task.id, id: completion) : task_task_completions_path(task_id: task.id),
+      method: completed ? :delete : :post,
+      form: { data: { turbo: true } },
+      class: "completed-btn" do %>
+    <% if completed %>
+      <i class="fa-solid fa-square-check"></i>
+    <% else %>
+      <i class="fa-regular fa-square-check"></i>
+    <% end %>
+
+  <% end %>
+</div>

@@ -1,31 +1,21 @@
 class TaskCompletionsController < ApplicationController
-  before_action :set_task
-
+  before_action :set_task, only: [:create, :destroy]
+  before_action :authenticate_user!
+  
   def create
-    task_record = current_user.task_completions.find_by(task: @task)
-    #current_userのtask_completionsの中からtaskの一個一個を探す。
-
-    if task_record
-      task_record.destroy
-      #taskがあれば、そのタスクを削除する。
-    else
-      current_user.task_completions.create!(task: @task)
-      #taskがなければ、タスクにcompletedをつける。
-    end
-
+    current_user.complete!(@task)
     respond_to do |format|
       format.turbo_stream
-      format.html {redirect_back fallback_location: root_path}
+      format.html { redirect_back fallback_location: tasks_path }
     end
   end
 
   def destroy
-    task_completion = current_user.task_completions.find_by(task: @task)
-    task_completion&.destroy
+    current_user.incomplete!(@task)
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_back fallback_location: root_path }
+      format.html { redirect_back fallback_location: tasks_path }
     end
   end
 
