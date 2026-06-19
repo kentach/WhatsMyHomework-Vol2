@@ -6,8 +6,7 @@ class CreateVocabularyTests < ActiveRecord::Migration[7.2]
 
       t.integer :vocabulary_score, null: false, default: 0
       t.integer :sentence_score, null: false, default: 0
-
-      t.date :test_date
+      t.date    :test_date,  null: false, default: -> { "CURRENT_DATE" }
 
       t.timestamps
     end

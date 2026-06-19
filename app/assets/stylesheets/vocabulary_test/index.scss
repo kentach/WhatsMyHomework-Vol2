@@ -1,0 +1,235 @@
+.score-tracker {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: "Hiragino Sans", "Segoe UI", sans-serif;
+}
+
+/* ヘッダー */
+.tracker-header {
+  background: #ff5757;
+  color: #fff;
+  padding: 28px 24px;
+  min-height: 100px;
+  border-radius: 0 0 16px 16px;
+}
+.tracker-lang { font-size: 13px; letter-spacing: .2em; color: #fff; margin: 0 0 6px; }
+.tracker-header h1 { margin: 0; font-size: 24px; }
+.tracker-stats { display: flex; gap: 24px; margin-top: 16px; }
+.tracker-stats .stat-label { display: block; font-size: 13px; color: #fff; }
+.tracker-stats strong { font-size: 20px; }
+
+
+$bg: #F7F9FC;
+$white: #FFFFFF;
+$border: #E4EAF2;
+$text: #2C3E50;
+$text-muted: #8A99AD;
+$primary: #2C3E50;
+$accent: #3B82F6;
+$danger: #EF4444;
+$radius: 12px;
+
+/* ===== コンテナ ===== */
+.vocabulary-tests-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  overflow-y: auto;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  padding: 40px 16px 20px;
+  box-sizing: border-box;
+}
+
+/* ===== ヘッダー ===== */
+.vocabulary-tests-header {
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin: 24px 0 24px;
+    letter-spacing: 0.05em;
+    color: #222;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin: 16px 0;
+    }
+  }
+}
+
+/* ===== 入力フォーム ===== */
+.vocabulary-tests-form-wrapper {
+  background: $white;
+  border-radius: $radius;
+  border: 1px solid $border;
+  padding: 20px 24px 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 140px;
+
+    &.align-bottom {
+      justify-content: flex-end;
+    }
+
+    label {
+      font-size: 12px;
+      color: $text-muted;
+      font-weight: 600;
+    }
+
+    input, select {
+      padding: 8px 10px;
+      border: 1.5px solid $border;
+      border-radius: 8px;
+      font-size: 14px;
+      color: $text;
+      background: $white;
+      box-sizing: border-box;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+        border-color: $accent;
+      }
+    }
+
+    input[type="submit"] {
+      background: $accent;
+      color: $white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 9px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+
+      &:hover {
+        background: darken($accent, 10%);
+      }
+    }
+  }
+
+  .error-list {
+    margin: 10px 0 0;
+    padding: 0 0 0 18px;
+    color: $danger;
+    font-size: 12px;
+
+    li {
+      margin-bottom: 2px;
+    }
+  }
+}
+
+/* ===== テーブルラッパー ===== */
+.vocabulary-tests-table-wrapper {
+  background: $white;
+  border-radius: $radius;
+  border: 1px solid $border;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  overflow-y: visible;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  -webkit-overflow-scrolling: touch;
+}
+
+.vocabulary-tests-table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+
+  thead {
+    background: $primary;
+
+    th {
+      color: $white;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+
+      @media (max-width: 768px) {
+        padding: 10px 8px;
+        font-size: 11px;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $border;
+      transition: background 0.15s;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: #F0F5FF;
+      }
+    }
+
+    td {
+      padding: 14px 16px;
+      font-size: 14px;
+      color: $text;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .delete-btn {
+    background: $danger;
+    color: $white;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: darken($danger, 10%);
+    }
+  }
+}
+
+/* ===== 空の状態 ===== */
+.vocabulary-tests-empty {
+  text-align: center;
+  padding: 48px 16px;
+  color: $text-muted;
+
+  h5 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    font-weight: normal;
+  }
+}
+
+/* ===== アクションメニュー ===== */
+.action-menu {
+  display: flex;
+  justify-content: center;
+}

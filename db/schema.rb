@@ -103,7 +103,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_19_090724) do
     t.bigint "homework_id", null: false
     t.integer "vocabulary_score", default: 0, null: false
     t.integer "sentence_score", default: 0, null: false
-    t.date "test_date"
+    t.date "test_date", default: -> { "CURRENT_DATE" }, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["homework_id"], name: "index_vocabulary_tests_on_homework_id"

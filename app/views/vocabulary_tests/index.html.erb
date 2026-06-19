@@ -1,0 +1,92 @@
+<div class="score-tracker">
+  <header class="tracker-header">
+    <p class="tracker-lang">単語テスト</p>
+    <h1><%= current_user.name %>さんの単語テスト</h1>
+
+    <% if @scores.any? %>
+      <div class="tracker-stats">
+        <div><span class="stat-label">回数</span><strong><%= @scores.size %>回</strong></div>
+        <div><span class="stat-label">平均点</span><strong></strong></div>
+        <div><span class="stat-label">最高点</span><strong></strong></div>
+      </div>
+    <% end %>
+  </header>
+</div>
+
+<div class="vocabulary-tests-container">
+  <div class="vocabulary-tests-form-wrapper">
+    <%= form_with model: @new_score, url: vocabulary_tests_path do |f| %>
+      <div class="form-row">
+        <div class="form-group">
+          <%= f.label :test_date, "日付" %>
+          <%= f.date_field :test_date %>
+        </div>
+        <div class="form-group">
+          <%= f.label :homework_id, "宿題" %>
+          <%= f.collection_select :homework_id, @homeworks, :id, :title,
+                { prompt: "宿題を選んでください" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :vocabulary_score, "単語テスト" %>
+          <%= f.number_field :vocabulary_score, min: 0, placeholder: "例: 8" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sentence_score, "文テスト" %>
+          <%= f.number_field :sentence_score, min: 0, placeholder: "例: 5" %>
+        </div>
+        <div class="form-group align-bottom">
+          <%= f.submit "記録する", class: "new-record-btn" %>
+        </div>
+      </div>
+
+      <% if @new_score.errors.any? %>
+        <ul class="error-list">
+          <% @new_score.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @scores.empty? %>
+    <div class="vocabulary-tests-empty">
+      <h5>まだ記録がありません。</h5>
+      <h5>上のフォームからテスト結果を入力してください。</h5>
+    </div>
+
+  <% else %>
+    <div class="vocabulary-tests-table-wrapper">
+      <table class="vocabulary-tests-table">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>宿題</th>
+            <th>単語テスト</th>
+            <th>文テスト</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @scores.each do |score| %>
+            <tr>
+              <td><%= score.test_date&.strftime("%Y/%m/%d") %></td>
+              <td><%= score.homework&.title %></td>
+              <td><%= score.vocabulary_score %></td>
+              <td><%= score.sentence_score %></td>
+              <td>
+                <div class="action-menu">
+                  <%= link_to "削除", vocabulary_test_path(score),
+                      class: "delete-btn",
+                      data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/navigation_bar" %>

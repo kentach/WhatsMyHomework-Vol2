@@ -6,6 +6,7 @@ class Homework < ApplicationRecord
 
   belongs_to :classroom
   has_many :tasks, dependent: :destroy
+  has_many :vocabulary_tests, dependent: :destroy
 
   # ransack
   # 検索可能なカラムを許可する
