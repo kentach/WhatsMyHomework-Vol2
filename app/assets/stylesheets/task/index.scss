@@ -1,0 +1,357 @@
+$accent: #ff5757;
+$accent-d: #e03e3e;
+$navy: #1a1f2e;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-400: #9ca3af;
+$gray-600: #6b7280;
+$white: #ffffff;
+$green: #10b981;
+$green-l: #34d399;
+
+// ── ページ ────────────────────────────────
+.my-tasks {
+  background: $gray-100;
+  min-height: 100vh;
+  padding-bottom: 96px;
+}
+
+// ── ヘッダー ──────────────────────────────
+.my-tasks-header {
+  background: $navy;
+  padding: 20px 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.my-tasks-header-inner {
+  margin-bottom: 16px;
+}
+
+.my-tasks-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: $white;
+  letter-spacing: -0.03em;
+  margin-bottom: 2px;
+}
+
+.my-tasks-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba($white, 0.5);
+}
+
+// 週ナビゲーター
+.week-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.week-nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba($white, 0.1);
+  color: rgba($white, 0.7);
+  flex-shrink: 0;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba($white, 0.2);
+  }
+}
+
+.week-days {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+}
+
+.week-day-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 0;
+  border-radius: 8px;
+  text-decoration: none;
+
+  &.selected {
+    background: $accent;
+
+    .week-day-name,
+    .week-day-num {
+      color: $white;
+    }
+    .week-day-num {
+      font-weight: 800;
+    }
+  }
+
+  &.today {
+    background: $accent;
+
+    .week-day-name,
+    .week-day-num {
+      color: $white;
+    }
+    .week-day-num {
+      font-weight: 800;
+    }
+  }
+}
+
+.week-day-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.week-day-num {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.week-range-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba($white, 0.4);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+// タブ
+.my-tasks-tabs {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba($white, 0.1);
+  margin: 0 -20px;
+}
+
+.my-tasks-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 12px 0;
+  background: #fff;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+
+  &.active {
+    color: #ff5757;
+    border-bottom-color: $accent;
+    font-size: 16px;
+  }
+}
+
+.tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: rgba($white, 0.15);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba($white, 0.7);
+
+  .my-tasks-tab.active & {
+    background: $accent;
+    color: $white;
+  }
+}
+
+// ── ボディ ───────────────────────────────
+.my-tasks-body {
+  padding: 16px 16px 0;
+}
+
+.tab-panel {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.homework-show-body {
+  background: $gray-100;
+  padding: 14px;
+  width: 100%;
+  margin: 10px auto;
+  max-width: 1000px;
+  min-height: 100vh;
+}
+
+// ── サマリー ───────────────────────────────
+.show-summary-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.show-summary-complete-card {
+  flex: 1;
+  min-width: 90px;
+  background: #c4f3bc;
+  border: 1px solid $green;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+.show-summary-incomplete-card {
+  flex: 1;
+  min-width: 90px;
+  background: #fbcfcf;
+  border: 1px solid $accent;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+.show-summary-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: $navy;
+}
+
+.show-summary-label {
+  font-size: 11px;
+  color: $gray-600;
+}
+
+.show-summary-msg {
+  width: 100%;
+  margin-top: 6px;
+  font-size: 12px;
+  color: $gray-600;
+}
+
+// ── タブ ────────────────────────────────
+.task-index-tabs {
+  display: flex;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.task-index-tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: $white;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-600;
+  cursor: pointer;
+  transition: 0.15s;
+  border-radius: 12px;
+
+  &.active {
+    background: $accent;
+    color: $white;
+    font-weight: 700;
+  }
+}
+
+// ── リスト ────────────────────────────────
+.task-index-list-header {
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+  align-items: center;
+  margin: 16px 0;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: $navy;
+    margin-top: 8px;
+  }
+
+  .task-index-list-count {
+    font-size: 16px;
+    color: $gray-600;
+  }
+}
+
+.test-index-info {
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+
+  ul {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 18px;
+    color: $gray-600;
+  }
+}
+// ── タスク ────────────────────────────────
+.task-index-check-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+
+  border: 1px solid #e9eaec;
+}
+
+.task-index-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.task-index-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: $navy;
+}
+
+.task-detail-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: $gray-600;
+}
+
+.task-index-completed {
+  background: #f0fdf8;
+  border-color: #b9fbd9;
+}

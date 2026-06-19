@@ -1,0 +1,36 @@
+<header class="my-tasks-header">
+  <div class="my-tasks-header-inner">
+    <h1 class="my-tasks-title"><%= current_user.name %>さんの宿題</h1>
+    <p class="my-tasks-subtitle">所属クラス：<%= current_user.classroom.eiken_level %></p>
+  </div>
+
+  <%# 週ナビゲーター %>
+  <div class="week-nav">
+    <%= link_to tasks_path(week: @prev_week, date: @prev_week), class: "week-nav-arrow", "aria-label": "前の週" do %>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    <% end %>
+
+    <div class="week-days">
+      <% @week_days.each do |day| %>
+        <%= link_to tasks_path(week: @week_days.first, date: day),
+              class: "week-day-cell #{'today' if day == Date.today} #{'selected' if day == @selected_date}" do %>
+          <span class="week-day-name"><%= I18n.l(day, format: '%a') %></span>
+          <span class="week-day-num"><%= day.day %></span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= link_to tasks_path(week: @next_week, date: @next_week), class: "week-nav-arrow", "aria-label": "次の週" do %>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    <% end %>
+  </div>
+
+  <%# 選択中の日付ラベル %>
+  <p class="selected-date-label">
+    <%= I18n.l(@selected_date, format: '%-m月%-d日（%a）') %> の宿題
+  </p>
+</header>

@@ -1,17 +1,19 @@
+TaskCompletion.delete_all
 Task.delete_all
 Homework.delete_all
-Classroom.delete_all
 User.delete_all
-
-user1 = User.create!(
-  name: "片山",
-  email: "saitama3181@example.com",
-  password: "saitama3181"
-)
+Classroom.delete_all
 
 pre1 = Classroom.create!(
   name: 'Pre1',
   eiken_level: '準1級'
+)
+
+user1 = User.create!(
+  name: "片山",
+  email: "saitama3181@example.com",
+  password: "saitama3181",
+  classroom: pre1
 )
 
 # Pre1の宿題

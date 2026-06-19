@@ -1,0 +1,69 @@
+<div class="homework-show-body">
+
+  <% done = @tasks.count { |task| current_user.completed?(task) } %>
+  <% total = @tasks.size %>
+
+  <div class="show-summary-row">
+
+    <div class="show-summary-incomplete-card">
+      <span class="show-summary-num" id="showDoneCount">
+        <%= done %>
+      </span>
+      <span class="show-summary-label">未完了</span>
+    </div>
+
+    <div class="show-summary-complete-card">
+      <span class="show-summary-num" id="showTotalCount">
+        <%= total %>
+      </span>
+      <span class="show-summary-label">完了</span>
+    </div>
+
+  </div>
+
+  <!-- =========================
+      タスク一覧
+  ========================= -->
+  <div class="task-index-list">
+    <div class="task-index-list-header">
+      <h3><%= current_user.classroom.eiken_level %> 宿題リスト</h3>
+      <span class="task-index-list-count"><%= total %> タスク</span>
+    </div>
+
+    <div class="test-index-info">
+      <ul>
+        <li>📌 授業前に宿題を必ずチェックしよう！</li>
+        <li>✅ 宿題が終わったらチェックを入れよう！</li>
+      </ul>
+    </div>
+
+    <!-- タブ -->
+    <div class="task-index-tabs">
+      <button class="task-index-tab active" data-tab="all">すべて</button>
+      <button class="task-index-tab" data-tab="incomplete">未完了</button>
+      <button class="task-index-tab" data-tab="completed">完了</button>
+    </div>
+
+  <% @tasks.each do |task| %>
+    <div
+      id="task-<%= task.id %>"
+      class="task-index-item <%= 'completed' if current_user.completed?(task) %>"
+      data-status="<%= current_user.completed?(task) ? 'completed' : 'incomplete' %>">
+
+      <label class="task-index-check-wrap">
+        <div id="completed-button-for-task-<%= task.id %>">
+          <%= render 'tasks/completed_button', task: task %>
+        </div>
+        <span class="task-index-name">
+          <%= task.name %>
+        </span>
+      </label>
+
+    </div>
+  <% end %>
+
+  <% if @tasks.empty? %>
+    <div>タスクはありません。</div>
+  <% end %>
+  </div>
+</div>

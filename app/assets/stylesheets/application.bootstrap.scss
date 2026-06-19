@@ -9,12 +9,17 @@
 @import 'footer';
 
 //宿題の一覧画面
-@import 'homework_index/index.scss';
+@import 'homework_index/index';
 
 //宿題の詳細画面
-@import 'homework_show/show.scss';
+@import 'homework_show/show';
 
 //共通部分
-@import 'shared/navigation_bar.scss';
+@import 'shared/navigation_bar';
+
+//マイタスク
+@import 'task/index';
+
+@import 'completed_button/button';
 
 

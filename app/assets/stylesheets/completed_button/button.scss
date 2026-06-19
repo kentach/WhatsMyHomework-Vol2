@@ -1,0 +1,47 @@
+.completed-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.completed-btn:active {
+  transform: scale(0.9);
+}
+
+.completed-btn i {
+  font-size: 26px;
+  transition: all 0.2s ease;
+}
+
+// =========================
+// 未完了
+// =========================
+.completed-btn .fa-regular {
+  color: #d1d5db;
+}
+
+// hover（未完了）
+.completed-btn:hover .fa-regular {
+  color: #10b981;
+  transform: scale(1.1);
+}
+
+// =========================
+// 完了
+// =========================
+.completed-btn .fa-solid {
+  color: #10b981;
+}
+
+// hover（完了）
+.completed-btn:hover .fa-solid {
+  color: #059669;
+  transform: scale(1.1);
+}

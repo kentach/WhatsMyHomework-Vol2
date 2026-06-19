@@ -2,6 +2,8 @@ document.addEventListener('turbo:load', () => {
   const sideMenu = document.getElementById('side-menu-after-login');
   const hamburgerBtn = document.getElementById('hamburger-btn-after-login');
   const menuOverlay = document.getElementById('menu-overlay-after-login');
+
+  if (!hamburgerBtn) return
   
   hamburgerBtn.addEventListener('click', () => {
     sideMenu.classList.toggle('open');

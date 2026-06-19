@@ -175,3 +175,81 @@
   margin-top: 10px;
   padding-left: 10px;
 }
+
+@media (max-width: 768px) {
+
+  .homework-index-container {
+    margin: 80px auto;
+    padding: 0 12px;
+  }
+
+  /* =========================
+    タイトル
+  ========================= */
+  .homework-page-title {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  /* =========================
+    検索欄
+  ========================= */
+  .search-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 280px;
+    height: 42px;
+    font-size: 15px;
+  }
+  
+  .search-button {
+    flex: 0 0 auto;
+    height: 42px;
+    padding: 0 14px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  /* =========================
+    タブ
+  ========================= */
+  .eiken-level-tabs {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .eiken-level-tab {
+    min-width: 110px;
+    font-size: 13px;
+    min-height: 48px;
+  }
+
+  /* =========================
+    カード
+  ========================= */
+  .homework-card {
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .homework-title {
+    font-size: 18px;
+    margin: 8px 0;
+  }
+
+  .homework-period {
+    font-size: 13px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}

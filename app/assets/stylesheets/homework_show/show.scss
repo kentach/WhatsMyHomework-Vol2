@@ -19,7 +19,7 @@ $green-l:   #34d399;
 
 // ── ヘッダー ──────────────────────────────
 .homework-show-header {
-  background: $accent;
+  background: #ff5757;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -81,17 +81,6 @@ $green-l:   #34d399;
   svg { flex-shrink: 0; }
 }
 
-.show-progress-track {
-  height: 3px;
-  background: rgba($white, 0.15);
-}
-
-.show-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, $accent, #ff8c8c);
-  transition: width 0.45s ease;
-  width: 0%;
-}
 
 // ── ボディ ───────────────────────────────
 .homework-show-body {
@@ -141,7 +130,7 @@ $green-l:   #34d399;
 }
 
 // ── タスクリスト ──────────────────────────
-.task-list {
+.homework-show-task-list {
   background: $white;
   border-radius: 16px;
   border: 1px solid $gray-200;
@@ -150,7 +139,7 @@ $green-l:   #34d399;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
-.task-list-header {
+.homework-show-task-list-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -158,14 +147,14 @@ $green-l:   #34d399;
   border-bottom: 1px solid $gray-200;
 
   h3 {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 800;
     color: $navy;
     margin: 0;
   }
 }
 
-.task-list-count {
+.homework-show-task-list-count {
   font-size: 12px;
   font-weight: 600;
   color: $gray-400;
@@ -175,7 +164,7 @@ $green-l:   #34d399;
 }
 
 // ヒントバナー
-.test-info {
+.homework-show-test-info {
   background: #fff8f0;
   border-bottom: 1px solid #ffe4c0;
   padding: 10px 16px;
@@ -190,7 +179,7 @@ $green-l:   #34d399;
   }
 
   li {
-    font-size: 12px;
+    font-size: 15px;
     color: #b45309;
     font-weight: 500;
     line-height: 1.5;
@@ -198,7 +187,7 @@ $green-l:   #34d399;
 }
 
 // タスク行
-.task-item {
+.homework-show-task-item {
   display: block;
   border-bottom: 1px solid $gray-200;
   position: relative;
@@ -238,7 +227,7 @@ $green-l:   #34d399;
   }
 }
 
-.task-check-wrap {
+.homework-show-task-check-wrap {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -246,8 +235,8 @@ $green-l:   #34d399;
   cursor: pointer;
 }
 
-.task-name {
-  font-size: 14px;
+.homework-show-task-name {
+  font-size: 16px;
   font-weight: 600;
   color: $navy;
   line-height: 1.4;
