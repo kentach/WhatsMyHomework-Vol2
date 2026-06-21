@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :homeworks, except: [:show]
+    resources :homeworks, except: [ :show ]
     resources :classrooms
     root "dashboard#index"
     get "/homeworks/draft", to: "homeworks#draft", as: :draft_homeworks
