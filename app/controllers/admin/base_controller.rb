@@ -1,12 +1,12 @@
 class Admin::BaseController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!
-  layout 'admin'
+  layout "admin"
 
   private
 
   def not_authenticated
-    flash[:warning] = t('defaults.flash_message.require_login')
+    flash[:warning] = t("defaults.flash_message.require_login")
     redirect_to admin_root_path
   end
 

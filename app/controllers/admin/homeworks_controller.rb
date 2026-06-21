@@ -40,7 +40,7 @@ class Admin::HomeworksController < Admin::BaseController
   private
 
   def set_homework
-    @homework = Homework.find(params[ :id ])
+    @homework = Homework.find(params[:id])
   end
 
   def homework_params
@@ -50,7 +50,7 @@ class Admin::HomeworksController < Admin::BaseController
       :test_start_date,
       :test_end_date,
       :classroom_id,
-      tasks_attributes: [:id, :name, :pdf, :_destroy]
+      tasks_attributes: [ :id, :name, :pdf, :_destroy ]
     )
   end
 end
