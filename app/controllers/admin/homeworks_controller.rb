@@ -1,7 +1,6 @@
-class Admin::HomeworksController < ApplicationController
+class Admin::HomeworksController < Admin::BaseController
   layout "admin"
   before_action :authenticate_user!
-  before_action :authenticate_admin!
   before_action :set_homework, only: [ :edit, :update, :destroy ]
 
   def index
@@ -42,10 +41,6 @@ class Admin::HomeworksController < ApplicationController
 
   def set_homework
     @homework = Homework.find(params[ :id ])
-  end
-
-  def authenticate_admin!
-    redirect_to root_path unless current_user.admin?
   end
 
   def homework_params
