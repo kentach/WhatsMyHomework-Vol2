@@ -55,6 +55,8 @@
               <th>ステータス</th>
               <th>クラス名</th>
               <th>宿題開始日</th>
+              <th>宿題終了日</th>
+              <th>最終更新</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -70,7 +72,15 @@
                   <% end %>
                 </td>
                 <td><%= homework.classroom&.eiken_level %></td>
-                <td><%= homework.test_start_date&.strftime("%Y/%m/%d") %></td>
+                <td><%= homework.test_start_date&.strftime("%Y/%m/%d") %>
+                  （<%= %w(日 月 火 水 木 金 土)[homework.test_start_date.wday] %>）
+                </td>
+                <td><%= homework.test_end_date&.strftime("%Y/%m/%d") %>
+                  （<%= %w(日 月 火 水 木 金 土)[homework.test_start_date.wday] %>）
+                </td>
+                <td><%= homework.updated_at.strftime("%Y/%m/%d %H:%M") %>
+                  （<%= %w(日 月 火 水 木 金 土)[homework.updated_at.wday] %>）
+                </td>
                 <td>
                   <%= link_to "編集", edit_admin_homework_path(homework), class: "btn btn-sm btn-warning" %>
                   <%= link_to "削除", admin_homework_path(homework), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>

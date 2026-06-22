@@ -4,7 +4,7 @@ class Admin::HomeworksController < Admin::BaseController
   before_action :set_homework, only: [ :edit, :update, :destroy ]
 
   def index
-    @homeworks = Homework.all.order(created_at: :desc)
+    @homeworks = Homework.all.order(updated_at: :desc)
   end
 
   def new
