@@ -4,7 +4,7 @@ class Admin::HomeworksController < Admin::BaseController
   before_action :set_homework, only: [ :edit, :update, :destroy ]
 
   def index
-    @homeworks = Homework.all.order(updated_at: :desc)
+    @homeworks = Homework.order(updated_at: :desc).page(params[:page]).per(20)
   end
 
   def new
@@ -39,10 +39,16 @@ class Admin::HomeworksController < Admin::BaseController
 
   def draft
     @homeworks = Homework.where(status: "draft")
+                         .order(updated_at: :desc)
+                         .page(params[:page])
+                         .per(20)
   end
 
   def published
     @homeworks = Homework.where(status: "published")
+                          .order(updated_at: :desc)
+                          .page(params[:page])
+                          .per(20)
   end
 
   private
