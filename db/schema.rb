@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_06_22_130710) do
+ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,15 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_130710) do
     t.datetime "updated_at", null: false
     t.index ["classroom_id"], name: "index_homeworks_on_classroom_id"
     t.index ["user_id"], name: "index_homeworks_on_user_id"
+  end
+
+  create_table "notification_classrooms", force: :cascade do |t|
+    t.bigint "notification_id", null: false
+    t.bigint "classroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classroom_id"], name: "index_notification_classrooms_on_classroom_id"
+    t.index ["notification_id"], name: "index_notification_classrooms_on_notification_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -129,6 +138,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_130710) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "homeworks", "classrooms"
   add_foreign_key "homeworks", "users"
+  add_foreign_key "notification_classrooms", "classrooms"
+  add_foreign_key "notification_classrooms", "notifications"
   add_foreign_key "notifications", "users"
   add_foreign_key "task_completions", "tasks"
   add_foreign_key "task_completions", "users"
