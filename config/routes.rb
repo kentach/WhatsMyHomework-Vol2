@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     root "dashboard#index"
     get "/homeworks/draft", to: "homeworks#draft", as: :draft_homeworks
     get "/homeworks/published", to: "homeworks#published", as: :published_homeworks
+    get "/notifications/draft", to: "notifications#draft", as: :draft_notifications
+    get "/notifications/published", to: "notifications#published", as: :published_notifications
   end
 
   devise_for :users, controllers: {
