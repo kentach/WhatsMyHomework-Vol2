@@ -16,10 +16,7 @@
               <h3 class="notification_title"><%= notification.title %></h3>
             </div>
             <p class="notification_date">
-              <%= (notification.published_at || notification.created_at).strftime("%-m/%-d") %>
-              <span class="notification_wday">
-                （<%= %w(日 月 火 水 木 金 土)[(notification.published_at || notification.created_at).wday] %>）
-              </span>
+                <%= display_time(notification.created_at) %>
             </p>
           </div>
 

@@ -11,7 +11,6 @@
       </svg>
       一覧に戻る
     <% end %>
-    <h2 class="notification_show_title"><%= @notification.title %></h2>
 
     <%# メタ情報（日付・作成者・対象クラス） %>
     <div class="notification_show_meta">
@@ -24,45 +23,26 @@
       <% if @notification.user.present? %>
         <span class="notification_show_creator">
           <i class="fa-solid fa-circle-user"></i>
-          <%= @notification.user.name %>先生
+          作成者：<%= @notification.user.name %>先生
         </span>
       <% end %>
 
       <% if @notification.classrooms.any? %>
         <span class="notification_show_class">
           <i class="fa-solid fa-user-group"></i>
-          <%= @notification.classrooms.map(&:name).join("・") %>
+          該当クラス：<%= @notification.classrooms.map(&:name).join("・") %>
         </span>
       <% end %>
     </div>
 
     <hr class="notification_show_divider">
-
+    <h2 class="notification_show_title"><%= @notification.title %></h2>
     <%# 本文 %>
     <div class="notification_show_body">
       <%= simple_format(@notification.content) %>
     </div>
 
   </div>
-
-  <%# 前後の通知ナビゲーション %>
-  <div class="notification_show_nav">
-    <% if @prev_notification %>
-      <%= link_to notification_path(@prev_notification), class: "notification_nav_btn" do %>
-        <i class="fa-solid fa-chevron-left"></i> 前のお知らせ
-      <% end %>
-    <% else %>
-      <span class="notification_nav_btn disabled"></span>
-    <% end %>
-
-    <% if @next_notification %>
-      <%= link_to notification_path(@next_notification), class: "notification_nav_btn" do %>
-        次のお知らせ <i class="fa-solid fa-chevron-right"></i>
-      <% end %>
-    <% else %>
-      <span class="notification_nav_btn disabled"></span>
-    <% end %>
-  </div>
+  <%= render "notifications/navigation" %>
 </section>
-
 <%= render 'shared/navigation_bar' %>
