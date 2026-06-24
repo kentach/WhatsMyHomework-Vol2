@@ -1,4 +1,5 @@
 class Admin::DashboardController < Admin::BaseController
+  before_action :authenticate_admin!
   layout "admin"
   def index
     @homeworks = Homework.all

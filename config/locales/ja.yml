@@ -1,5 +1,10 @@
 ja:
   views:
+    enums:
+      user:
+        role:
+          student: "生徒"
+          admin: "管理者"
     registrations:
       new: 
         title: 新規登録

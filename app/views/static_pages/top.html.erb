@@ -8,15 +8,7 @@
   </div>
 
   <nav class="hamburger-menu" id="hamburger-menu">
-      <ul>
-        <li class="nav-item">
-        <i class="fa-solid fa-user-plus"></i>
-          <%= link_to new_user_registration_path,
-              class: "nav-link" do %>
-            新規登録
-          <% end %>
-        </li>
-        
+      <ul>        
         <li class="nav-item">
         <i class="fa-solid fa-right-to-bracket"></i>
           <%= link_to new_user_session_path,
@@ -33,13 +25,9 @@
     <h1>宿題わかる<br>って最高じゃん？</h1>
     <div class="login-btn">
       <div class="cta-section-buttons fade-up delay-1 mt-5">
-        <%= link_to "今すぐ始める",
-          new_user_registration_path,
-          class: "btn btn-lg btn-cta-primary rounded-pill fw-bold shadow" %>
-
         <%= link_to "ログインする",
           new_user_session_path,
-          class: "btn btn-lg btn-cta-outline rounded-pill fw-bold" %>
+          class: "btn btn-lg btn-cta-primary rounded-pill fw-bold shadow" %>
       </div>
     </div>
   </div>

@@ -1,0 +1,35 @@
+<% content_for(:title, "ユーザー管理") %>
+<div class="container mb-5 pt-2">
+  <h1>ユーザー管理</h1>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= link_to "ユーザーを新しく作成", new_admin_user_path, class: "btn btn-info" %>
+    </div>
+  </div>
+  <div class="row">
+  
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><%= User.human_attribute_name(:id) %></th>
+            <th scope="col"><%= User.human_attribute_name(:name) %></th>
+            <th scope="col">生徒ID</th>
+            <th scope="col"><%= User.human_attribute_name(:role) %></th>
+            <th scope="col">クラス</th>
+            <th scope="col"><%= User.human_attribute_name(:created_at) %></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @users %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= paginate @users, theme: 'bootstrap-5' %>
+    </div>
+  </div>
+</div>
