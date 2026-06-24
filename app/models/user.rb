@@ -1,14 +1,30 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :rememberable, :validatable
+
+  validates :student_id, presence: true, uniqueness: true
+  validates :classroom_id, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, presence: true, on: :create
 
   belongs_to :classroom
+  
   has_many :task_completions, dependent: :destroy
   has_many :completed_tasks, through: :task_completions, source: :task
   has_many :vocabulary_tests, dependent: :destroy
   has_many :notifications, dependent: :destroy
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
+  end
 
   def completed?(task)
     task_completions.exists?(task: task)

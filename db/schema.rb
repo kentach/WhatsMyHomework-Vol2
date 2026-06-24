@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
+ActiveRecord::Schema[7.2].define(version: 2026_06_24_050159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,16 +76,13 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
   create_table "notifications", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "notification_type", default: 0, null: false
-    t.integer "target_type", default: 0, null: false
+    t.string "notification_type"
+    t.string "target_type"
     t.datetime "published_at"
-    t.integer "status", default: 0, null: false
+    t.string "status", default: "draft", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["published_at"], name: "index_notifications_on_published_at"
-    t.index ["status"], name: "index_notifications_on_status"
-    t.index ["target_type"], name: "index_notifications_on_target_type"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -102,7 +99,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
-    t.text "description"
     t.bigint "homework_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -110,7 +106,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
     t.string "reset_password_token"
@@ -120,9 +115,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
     t.datetime "updated_at", null: false
     t.bigint "classroom_id"
     t.integer "role", default: 0, null: false
+    t.string "student_id", default: "", null: false
     t.index ["classroom_id"], name: "index_users_on_classroom_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["student_id"], name: "index_users_on_student_id", unique: true
   end
 
   create_table "vocabulary_tests", force: :cascade do |t|
