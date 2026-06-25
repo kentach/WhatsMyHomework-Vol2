@@ -9,12 +9,12 @@ class HomeworksController < ApplicationController
     if @selected_classroom
       @homeworks = @homeworks.where(classroom_id: @selected_classroom.id)
     end
-    
+
     @homeworks = @homeworks.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
-    @homework = Homework.published.find(id:params[:id])
+    @homework = Homework.published.find(id: params[:id])
     @tasks = @homework.tasks
   end
 end

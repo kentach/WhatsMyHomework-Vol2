@@ -1,5 +1,4 @@
 class Admin::DashboardController < Admin::BaseController
-
   def index
     @published_homeworks = Homework.where.published
     @draft_homeworks = Homework.where.draft

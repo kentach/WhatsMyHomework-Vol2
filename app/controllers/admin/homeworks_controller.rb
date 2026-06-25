@@ -71,5 +71,5 @@ class Admin::HomeworksController < Admin::BaseController
       :classroom_id,
       tasks_attributes: [ :id, :name, :pdf, :_destroy ]
     )
-  end 
+  end
 end

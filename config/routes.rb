@@ -12,14 +12,14 @@ Rails.application.routes.draw do
         get :published
       end
     end
-    
+
     resources :notifications do
       collection do
         get :draft
         get :published
       end
     end
-    
+
     resources :users
 
     # 管理画面ログイン
