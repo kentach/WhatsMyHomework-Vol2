@@ -4,35 +4,41 @@
   <%= render "homeworks/header" %>
   <div class="homework-show-body">
     <div class="homework-show-task-list">
+
       <div class="homework-show-task-list-header">
         <h3><%= @homework.title %> 宿題リスト</h3>
         <span class="homework-showtask-list-count"><%= @tasks.size %> タスク</span>
       </div>
+
       <p class="homework-created-by">
         <i class="fa-solid fa-circle-user"></i>
-        作成者：<span><%= @homework.user&.name %>先生</span>
+        作成：<span><%= @homework.user&.name %>先生</span>
       </p>
+
       <div class="homeworks-show-test-period">📅 テスト期間：
           <%= @homework.test_start_date.strftime("%m月%d日") %> 〜
           <%= @homework.test_end_date.strftime("%m月%d日") %>
       </div>
+
       <div class="homework-show-test-info">
         <ul>
           <li>📌 授業前に宿題を必ずチェックしよう！</li>
-          <li>📌 今週の宿題は「マイタスク」をチェックしよう！</li>
+          <li>📌 今週の宿題は「マイタスク」をチェック</li>
         </ul>
       </div>
 
       <% @tasks.each do |task| %>
+
       <div id="task-<%= task.id %>" class="homework-show-task-item">
         <label class="homework-show-task-check-wrap">
-          <div id="homework-show-completed-button-for-task-<%= task.id %>">
-          </div>
+          <div id="homework-show-completed-button-for-task-<%= task.id %>"></div>
+
           <div class="homework-show-task-content">
             <span class="homework-show-task-name">
               <i class="fa-solid fa-square-check"></i>
               <%= task.name %>
             </span>
+            
             <% if task.pdf.attached? %>
               <%= link_to url_for(task.pdf), target: "_blank", class: "homework-show-pdf-link" do %>
                 <i class="fas fa-file-pdf"></i>
@@ -40,10 +46,12 @@
               <% end %>
             <% end %>
           </div>
+
         </label>
       </div>
+
     <% end %>
-    </div>
+  </div>
 
     <%= link_to homeworks_path, class: "back-link" do %>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

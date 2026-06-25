@@ -1,11 +1,8 @@
 class Admin::DashboardController < Admin::BaseController
-  before_action :authenticate_admin!
-  layout "admin"
   def index
-    @homeworks = Homework.all
-    @published_homeworks = @homeworks.where(status: "published")
-    @draft_homeworks = @homeworks.where(status: "draft")
-    @classrooms = Classroom.all
-    @recent_homeworks = @homeworks.order(updated_at: :desc).limit(10)
+    @published_homeworks = Homework.where.published
+    @draft_homeworks = Homework.where.draft
+    @classrooms = Classroom.order(created_at: :asc)
+    @recent_homeworks = Homework.order(updated_at: :desc).limit(10)
   end
 end

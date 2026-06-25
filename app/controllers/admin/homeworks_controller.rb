@@ -1,6 +1,5 @@
 class Admin::HomeworksController < Admin::BaseController
   layout "layouts/admin"
-  before_action :authenticate_user!
   before_action :set_homework, only: [ :edit, :update, :destroy ]
 
   def index
@@ -16,11 +15,11 @@ class Admin::HomeworksController < Admin::BaseController
   end
 
   def create
-    @homework = Homework.new(homework_params)
-    @homework.user_id = current_user.id
+    @homework = current_user.homeworks.build(homework_params)
     if @homework.save
       redirect_to admin_root_path, notice: "宿題を作成しました"
     else
+      flash.now[:danger] = "更新できませんでした。"
       render :new, status: :unprocessable_entity
     end
   end
@@ -42,7 +41,7 @@ class Admin::HomeworksController < Admin::BaseController
   end
 
   def draft
-    @q = Homework.where(status: "draft").ransack(params[:q])
+    @q = Homework.draft.ransack(params[:q])
     @homeworks = @q.result(distinct: true)
                    .order(updated_at: :desc)
                    .page(params[:page])
@@ -50,7 +49,7 @@ class Admin::HomeworksController < Admin::BaseController
   end
 
   def published
-    @q = Homework.where(status: "published").ransack(params[:q])
+    @q = Homework.published.ransack(params[:q])
     @homeworks = @q.result(distinct: true)
                    .order(updated_at: :desc)
                    .page(params[:page])

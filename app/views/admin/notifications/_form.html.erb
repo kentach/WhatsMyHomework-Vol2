@@ -1,14 +1,8 @@
 <div class="card-body">
-    <%= form_with model: [:admin, @notification] do |f| %>
+  <%= form_with model: [:admin, @notification] do |f| %>
 
       <%# エラーメッセージ %>
-      <% if @notification.errors.any? %>
-        <div class="alert alert-danger">
-          <% @notification.errors.full_messages.each do |msg| %>
-            <p class="mb-0"><%= msg %></p>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render "admin/notifications/error_message"%>
 
       <%# タイトル %>
       <div class="mb-3">
@@ -32,7 +26,7 @@
       <div class="mb-3">
         <%= f.label :content, "本文", class: "form-label fw-bold" %>
         <%= f.text_area :content,
-              rows: 5,
+              rows: 8,
               placeholder: "通知の詳細内容を入力してください。",
               class: "form-control" %>
       </div>

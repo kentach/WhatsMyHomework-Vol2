@@ -74,7 +74,7 @@
                   <% else %>
                     <span>
                       <i class="fa-solid fa-user-group"></i>
-                      <%= notification.classrooms.map(&:name).join("、").presence || "未設定" %>
+                      <%= truncate(notification.classrooms.map(&:name).join("、").presence, length: 20, omission: "…") || "未設定" %>
                     </span>
                   <% end %>
                 </td>

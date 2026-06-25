@@ -71,10 +71,11 @@
         <% if task.pdf.attached? %>
           <%= link_to url_for(task.pdf), target: "_blank", class: "homework-show-pdf-link" do %>
             <i class="fas fa-file-pdf"></i>
-            <%= task.pdf.filename %>
+            file
           <% end %>
         <% end %>
       </label>
+      
     </div>
   <% end %>
 

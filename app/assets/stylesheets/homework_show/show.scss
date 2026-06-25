@@ -25,7 +25,6 @@ $green-l:   #34d399;
   background: $accent;
   z-index: 10;
 
-  // iPhoneのノッチ対応
   padding-top: env(safe-area-inset-top);
 }
 
@@ -299,15 +298,14 @@ $green-l:   #34d399;
 }
 
 .homework-show-task-check-wrap {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 15px 16px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 16px;
+    cursor: pointer;
 
-  // タップ領域を広めに確保
   @media (max-width: 390px) {
-    padding: 14px 14px;
+    padding: 10px;
     gap: 12px;
   }
 }
@@ -317,7 +315,7 @@ $green-l:   #34d399;
   flex-direction: column;
   gap: 6px;
   flex: 1;
-  min-width: 0; // テキストが溢れないよう
+  min-width: 0;
 }
 
 .homework-show-pdf-link {
@@ -332,8 +330,6 @@ $green-l:   #34d399;
   background: rgba($accent, 0.08);
   border-radius: 6px;
   width: fit-content;
-
-  // タップしやすい最小サイズ
   min-height: 36px;
 
   i { font-size: 14px; }

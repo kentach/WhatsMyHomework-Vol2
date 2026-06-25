@@ -1,10 +1,9 @@
 class Admin::ClassroomsController < Admin::BaseController
-  layout "admin"
-  before_action :authenticate_user!
+  layout "layouts/admin"
   before_action :set_classroom, only: [ :edit, :update, :destroy ]
 
   def index
-    @classrooms = Classroom.all
+    @classrooms = Classroom.order(created_at: :asc)
   end
 
   def new
@@ -27,6 +26,7 @@ class Admin::ClassroomsController < Admin::BaseController
     if @classroom.update(classroom_params)
       redirect_to admin_classrooms_path, notice: "更新しました"
     else
+      flash.now[:danger] = "更新できませんでした。"
       render :edit, status: :unprocessable_entity
     end
   end

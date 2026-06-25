@@ -15,7 +15,7 @@
         <h3><%= @published_notifications.count %></h3>
         <p>公開中</p>
       </div>
-      <%= link_to "一覧を見る", admin_published_notifications_path, class: "small-box-footer text-white" %>
+      <%= link_to "一覧を見る", published_admin_notifications_path, class: "small-box-footer text-white" %>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
         <h3><%= @draft_notifications.count %></h3>
         <p>下書き</p>
       </div>
-      <%= link_to "一覧を見る", admin_draft_notifications_path, class: "small-box-footer text-white" %>
+      <%= link_to "一覧を見る", draft_admin_notifications_path, class: "small-box-footer text-white" %>
     </div>
   </div>
 </div>

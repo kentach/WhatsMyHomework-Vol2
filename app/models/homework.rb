@@ -11,8 +11,8 @@ class Homework < ApplicationRecord
 
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
 
-  # ransack
-  # 検索可能なカラムを許可する
+  enum status: { draft: "draft", published: "published" }
+
   def self.ransackable_attributes(auth_object = nil)
     %w[
       title
@@ -21,7 +21,6 @@ class Homework < ApplicationRecord
     ]
   end
 
-  # 関連も検索したい場合
   def self.ransackable_associations(auth_object = nil)
     %w[classroom user]
   end

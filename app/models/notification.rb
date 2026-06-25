@@ -24,9 +24,9 @@ class Notification < ApplicationRecord
   }
 
   enum status: {
-    draft: 0,      # 下書き
-    published: 1  # 公開中
-}
+      draft: 0,      # 下書き
+      published: 1  # 公開中
+  }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[

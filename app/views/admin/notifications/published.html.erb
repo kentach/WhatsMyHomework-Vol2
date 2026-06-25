@@ -16,7 +16,7 @@
             <%= @notifications.count %>件
           </h3>
           <div class="card-tools">
-            <%= link_to "公開中一覧はこちら >", admin_published_notifications_path, class: "btn btn-sm btn-success" %>
+            <%= link_to "下書き中一覧はこちら >", admin_draft_notifications_path, class: "btn btn-sm bg-secondary" %>
           </div>
         </div>
 
@@ -90,7 +90,7 @@
                         <% else %>
                           <span>
                             <i class="fa-solid fa-user-group"></i>
-                            <%= notification.classrooms.map(&:name).join("、").presence || "未設定" %>
+                              <%= truncate(notification.classrooms.map(&:name).join("、").presence, length: 20, omission: "…") || "未設定" %>
                           </span>
                         <% end %>
                       </td>

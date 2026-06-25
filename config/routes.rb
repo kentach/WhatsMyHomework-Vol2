@@ -5,10 +5,21 @@ Rails.application.routes.draw do
     resources :notifications, except: [ :show ]
 
     root "dashboard#index"
-    get "/homeworks/draft", to: "homeworks#draft", as: :draft_homeworks
-    get "/homeworks/published", to: "homeworks#published", as: :published_homeworks
-    get "/notifications/draft", to: "notifications#draft", as: :draft_notifications
-    get "/notifications/published", to: "notifications#published", as: :published_notifications
+
+    resources :homeworks do
+      collection do
+        get :draft
+        get :published
+      end
+    end
+
+    resources :notifications do
+      collection do
+        get :draft
+        get :published
+      end
+    end
+
     resources :users
 
     # 管理画面ログイン
