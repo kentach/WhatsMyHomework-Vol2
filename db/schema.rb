@@ -76,8 +76,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_26_114942) do
   create_table "notifications", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "notification_type", default: 0, null: false
-    t.integer "target_type", default: 0, null: false
+    t.string "notification_type", default: "0", null: false
+    t.string "target_type", default: "0", null: false
     t.datetime "published_at"
     t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
