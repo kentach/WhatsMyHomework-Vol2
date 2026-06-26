@@ -39,9 +39,9 @@ users_data = [
   [ "片山",   "daiki555",   "準2級"         ],
   [ "矢野",   "tsubasa555", "準2級プラス"    ],
   [ "宮田",   "suzuka555",  "中学生3級"     ],
-  [ "大塚",   "mitsuki555", "小学生高学年5級"],
-  [ "稲荷",   "hinako555",  "小学生高学年4級"],
-  [ "ゲスト",   "guest555",  "TOEIC"]
+  [ "大塚",   "mitsuki555", "小学生高学年5級" ],
+  [ "稲荷",   "hinako555",  "小学生高学年4級" ],
+  [ "ゲスト",   "guest555",  "TOEIC" ]
 ]
 
 users = users_data.map do |name, student_id, classroom_name|
@@ -54,6 +54,3 @@ users = users_data.map do |name, student_id, classroom_name|
     role: 1
   )
 end
-
-
-
