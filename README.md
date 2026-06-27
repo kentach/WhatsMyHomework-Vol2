@@ -1,5 +1,6 @@
 ## サービス名 「宿題管理アプリ What's My Homework?」
 ### URL： [What's My Homework?](https://whatsmyhomework.onrender.com/)
+### ※ ゲストログインの方（student ID/ password: guest555でログインしてください。）
 ## ロゴ
 [![Image from Gyazo](https://i.gyazo.com/201a1e51b74a205f536de44d4495ce02.png)](https://i.gyazo.com/201a1e51b74a205f536de44d4495ce02)
 
