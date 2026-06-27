@@ -1,7 +1,10 @@
 ## サービス名
-### [宿題管理アプリ What's My Homework?](https://whatsmyhomework.onrender.com/)
-
+### URL [宿題管理アプリ What's My Homework?](https://whatsmyhomework.onrender.com/)
+## ロゴ
 [![Image from Gyazo](https://i.gyazo.com/201a1e51b74a205f536de44d4495ce02.png)](https://i.gyazo.com/201a1e51b74a205f536de44d4495ce02)
+
+--- 
+### 広告
 [![Image from Gyazo](https://i.gyazo.com/c0acd75731d0cd3e76d7615d10a91c34.png)](https://i.gyazo.com/c0acd75731d0cd3e76d7615d10a91c34)
 
 ---
