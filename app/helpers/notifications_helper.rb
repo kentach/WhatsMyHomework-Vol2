@@ -19,7 +19,7 @@ module NotificationsHelper
     when "event"               then { label: "イベント", color: "primary" }
     when "eiken_result"        then { label: "英検結果", color: "warning" }
     when "information"         then { label: "お知らせ", color: "secondary" }
-    when "others"              then { label: "その他", color: "light" }
+    when "others"              then { label: "その他", color: "dark" }
     end
     return unless badge
 
@@ -34,7 +34,7 @@ module NotificationsHelper
         content_tag(:i, "", class: "fa-solid fa-user-group") +
         " クラス #{notification.classrooms.map(&:name).join("・")}"
       end
-    else notification.all_classes?
+    elsif notification.all_classes?
       content_tag(:span) do
         content_tag(:i, "", class: "fa-solid fa-users") + " 全クラス"
       end

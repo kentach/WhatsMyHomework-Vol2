@@ -32,7 +32,9 @@
                   <strong><%= truncate(notification.title, length: 15, omission: "…")%></strong>
                 </td>
 
-                <td><%= notification_type_badge(notification) %></td>
+                <td>
+                  <%= notification_type_badge(notification) %>
+                </td>
 
                 <td>
                   <% if notification.all_classes? %>
@@ -53,7 +55,7 @@
                 <td><%= format_date(notification.created_at) %></td>
                 
                 <%# 通知更新日　%>
-                <td><%= format_date(notification.updated_at) %></td>
+                <td><%= format_date(notification.updated_at, with_time: true) %></td>
 
                 <td><%= notification.user&.name %></td>
 

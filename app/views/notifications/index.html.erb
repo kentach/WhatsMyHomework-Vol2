@@ -29,6 +29,7 @@
           <div class="notification_card_body">
             <p><%= truncate(notification.content, length: 50, omission: "…") %></p>
           </div>
+
           <%# 対象クラス %>
           <div class="notification_classrooms">
             <%= notification_target_label(notification) %>
